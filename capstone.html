@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>MongoDB Interface</title>
+  <meta name="description" content="MongoDB and RESTful server">
+  <meta name="author" content="Jeremy Bridges">
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+     <script language="JavaScript">
+        function target_popup(form) {
+        window.open('', 'formpopup', 'width=400,height=400,resizeable,scrollbars');
+        form.target = 'formpopup';
+        }
+     </script>
+</head>
+
+<body>
+  <h1 style="text-align: center;">MongoDB Interface</h1>
+
+  <p><b>Please enter data in JSON to add document</b></p>
+      <form method="POST" onsubmit="target_popup(this)" action="http://localhost:8080/stocks/api/v1.0/createStock/">
+          <label for="ticker">Ticker Symbol:</label><br>
+          <input type="text" id="ticker" name="ticker"><br>
+          <label for="data">Enter data in JSON format:<br>
+                Example: {"Sector" : "Healthcare", "Ticker" : "TEST", "Company" : "Acme"}<br></label>
+          <input type="text" id="data" name="data"><br>
+          <input type="submit" value="Submit">
+      </form>
+
+  <p><b>Please enter ticker symbol to find document</b></p>
+	  <form method="GET" onsubmit="target_popup(this)" action="http://localhost:8080/stocks/api/v1.0/getStock/">
+		  <label for="ticker">Ticker Symbol:</label><br>
+		  <input type="text" id="ticker" name="ticker"><br>
+		  <input type="submit" value="Submit">
+	  </form>
+
+  <p><b>Please enter ticker symbol to update document</b></p>
+      <form method="POST" onsubmit="target_popup(this)" action="http://localhost:8080/stocks/api/v1.0/updateStock/">
+		  <label for="ticker">Ticker Symbol:</label><br>
+		  <input type="hidden" name="_method" value="PUT">
+          <input type="text" id="ticker" name="ticker"><br>
+		  <label for="field">Field:</label><br>
+		  <input type="text" id="field" name="field"><br>
+          <input type="submit" value="Submit">
+	  </form>
+
+  <p><b>Please enter ticker symbol to delete document</b></p>
+    <form method="POST" onsubmit="target_popup(this)" action="http://localhost:8080/stocks/api/v1.0/deleteStock/">
+        <label for="ticker">Ticker Symbol:</label><br>
+        <input type="text" id="ticker" name="ticker"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
